@@ -39,7 +39,7 @@ gitPullPush() {
  fi
 }
 
-getVideoFrame () {
+getVideoThumbnail () {
 
   if [ $# -eq 0 ]; then
     echo "did not get input"
@@ -47,14 +47,14 @@ getVideoFrame () {
   elif [ $# -eq 1 ]; then
     echo "gettin the first frame"
     file="$1"
-    frame=0
+    frame="00:00:01"
   elif [ $# -eq 2 ]; then
     file="$1"
     frame="$2"
   fi
 
-  output="${file%.*}_$frame.jpg"
-  ffmpeg -i "$file" -vf "select=eq(n\,$frame)" -vframes 1 "$output"
+  output="${file%.*}_thumbnail.jpg"
+  ffmpeg -i "$file" -ss "$frame" -vframes 1 "$output"
 }
 
 # create alisases
@@ -67,6 +67,7 @@ alias gppo="gitPullPush origin"
 alias :q=exit
 alias octave="octave --no-gui $@"
 alias glog="git log --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias sl="cvlc --play-and-exit ~/git/linux-setup/miscellaneous/sounds/pregananant.mp3 > /dev/null 2>&1 & sl"
 
 # use ctags to generate code tags
 generateTags() {
@@ -182,7 +183,7 @@ echo '"$UAV_NAME" > ~/.i3/uav_name.sh
 fi
 
 # set vi mode in bash
-set -o vi
+# set -o vi
 
 # by default, athame should be off
 export ATHAME_ENABLED=0
