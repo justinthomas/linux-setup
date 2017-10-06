@@ -493,6 +493,7 @@ if g:user_mode == "0"
   nnoremap <leader>u Ivim ~/.vim/UltiSnips/athame.snippets
   nnoremap <leader>x Icd ~/git/xray-decoder/; ./decoder.py
   inoremap <c-x> cd ~/git/xray-decoder/; ./decoder.py
+  nnoremap <leader>ww Ivim ~/git/notes/index.md
 
   nnoremap OA i<up>
   nnoremap OB i<down>
