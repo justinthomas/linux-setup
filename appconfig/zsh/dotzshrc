@@ -141,6 +141,10 @@ zshexit() {
    done
 
    $TMUX_BIN kill-session -t "T$PPID"
+
+   for i in `ps aux | grep "\-[z]sh" | awk '{print $2}'`; do   
+    killp "$i"
+   done
 }                                                       
 
 # VIM alias for running vim in tmux and in servermode
